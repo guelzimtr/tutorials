@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Learning AngularJS</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js" type="text/javascript"></script>
+	<script src="js/app.js" type="text/javascript"></script>
+	<script src="js/maincontroller.js" type="text/javascript"></script>
+</head>
+<body ng-app='MyFirstNGApp'>
+	<div class="container">
+		<div class="hero-unit">
+			<h1>AngularJS first tutorial - Dummies level</h1>
+			<p>Get your hands dirty !</p>
+			<em>@tarikguelzim - 2014</em>
+
+			<hr>
+		</div><!-- .hero-unit -->
+		<div class="row">
+			<div id='content1' ng-controller='tut1'>
+
+				Part 1: scope variable<p>
+
+				{{helloworld}}
+
+			</div>
+			
+			<hr>
+			<div id='content2' ng-controller='tut2'>
+
+				Part 2: variable binding<p>
+
+				<input type='text' ng-model='userName' />
+				{{userName}}
+
+			</div>
+
+			<hr>
+			<div id='content3' ng-controller='tut3'>
+				Part 3: Selection box<p>
+
+				<select ng-model='selectedPerson' ng-options='obj.name for obj in people'></select>
+				<select ng-model='selectedGenre'>
+					<option ng-repeat='label in people[selectedPerson.id].music'>{{label}}</option>
+				</select>
+			</div>
+
+			<hr>
+			<div id='content4' ng-controller='tut3'>
+				Part 4: search filter<p>
+				<input type='text' ng-model='searchText' />
+				<ul>
+					<li ng-repeat='person in people | filter:searchText'>#{{person.id}} {{person.name}}</li>
+				</ul>
+			</div>
+
+			<hr>
+			<div id='content' ng-controller='tut5'>
+				Part 5: Add data<p>
+
+				<input type='text' ng-model='searchText' />
+				<ul>
+					<li ng-repeat='person in people | filter:searchText' ng-show='person.live == true'>#{{person.id}} {{person.name}}</li>
+				</ul>
+				<input type='text' ng-model='newPerson' />
+				<button ng-click='addNew()' class="btn">Add</button>
+
+				<ul>
+					<li ng-repeat='person in people'>#{{person.id}} {{person.name}}</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
